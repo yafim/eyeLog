@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{FCA51770-55E4-4F85-A1CE-5C3FA1FDD440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeLog", "EyeLog\EyeLog.csproj", "{86DC7901-DB8D-401A-A387-F307C5E3901E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCA51770-55E4-4F85-A1CE-5C3FA1FDD440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA51770-55E4-4F85-A1CE-5C3FA1FDD440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA51770-55E4-4F85-A1CE-5C3FA1FDD440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA51770-55E4-4F85-A1CE-5C3FA1FDD440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DC7901-DB8D-401A-A387-F307C5E3901E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DC7901-DB8D-401A-A387-F307C5E3901E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DC7901-DB8D-401A-A387-F307C5E3901E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DC7901-DB8D-401A-A387-F307C5E3901E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
