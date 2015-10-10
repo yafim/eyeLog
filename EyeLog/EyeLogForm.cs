@@ -33,7 +33,7 @@ namespace EyeLog
         private ContextMenu m_TrayMenu;
 
         /// <summary>
-        /// Initializes a new instance of the Form1 class.
+        /// Initializes a new instance of the EyeLogForm class.
         /// </summary>
         public EyeLogForm()
         {
