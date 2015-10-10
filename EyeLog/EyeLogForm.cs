@@ -28,7 +28,7 @@ namespace EyeLog
         private NotifyIcon m_TrayIcon;
 
         /// <summary>
-        /// 
+        /// Application navigation Menu
         /// </summary>
         private ContextMenu m_TrayMenu;
 
