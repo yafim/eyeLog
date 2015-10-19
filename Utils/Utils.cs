@@ -19,7 +19,7 @@ namespace Utils
             // Evaluate running time
             m_TimeElasped = m_CurrenTime.Subtract(startTime);
 
-            // Current cursor position
+            // Current cursor position.
             Point relativePoint = form.PointToClient(Cursor.Position);
 
             // Set time stamp 
