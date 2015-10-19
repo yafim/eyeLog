@@ -8,24 +8,52 @@ namespace Utils
 {
     public class Utils
     {
-        public static string ControllerCoordinates(Form form, Stopwatch stopWatch)
+        private static DateTime m_CurrenTime;
+        private static TimeSpan m_TimeElasped;
+
+        public static string SetJsonInformation(Form form, Stopwatch stopWatch, DateTime startTime)
         {
+            // Get current time
+            m_CurrenTime = DateTime.Now;
+
+            // Evaluate running time
+            m_TimeElasped = m_CurrenTime.Subtract(startTime);
+
+            // Current cursor position
             Point relativePoint = form.PointToClient(Cursor.Position);
-         //   string str = string.Format("{{\n \"x\": {0},\n\"y\": {1} \n}},\n", relativePoint.X, relativePoint.Y);
-       //     string timeStamp = GetTimestamp(DateTime.Now);
-        //    string timeStamp = dt.AddSeconds(seconds).ToString("HH:mm:ss");
-            string timeStamp = stopWatch.Elapsed.ToString();
+
+            string timeStamp = m_TimeElasped.ToString();
             
-            string str = string.Format("{{\n \"x\": {0},\n\"y\": {1},\n \"timeStamp\" : \"{2}\"\n }},\n", relativePoint.X, relativePoint.Y, timeStamp);
- 
-            
-            return str;
+         //   string str = string.Format("{{\n \"x\": {0},\n\"y\": {1},\n \"timeStamp\" : \"{2}\"\n }},\n", relativePoint.X, relativePoint.Y, timeStamp);
+
+            string strToReturn = SetJsonFormat(relativePoint.X, relativePoint.Y, timeStamp);
+            return strToReturn;
         }
 
-        public static string GetTimestamp(DateTime value)
+        /// <summary>
+        /// TimeStamp format
+        /// TODO: Never used
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private static string GetTimestamp(DateTime value)
         {
-        //    return value.ToString("yyyyMMddHHmmssffff");
             return value.ToString("mmssffff");
         }
+
+        /// <summary>
+        /// Set Json information in string
+        /// </summary>
+        /// <param name="xPosition">X Position</param>
+        /// <param name="yPosition">Y Position</param>
+        /// <param name="timeStamp">Current timeStamp</param>
+        /// <returns></returns>
+        private static string SetJsonFormat(int xPosition, int yPosition, string timeStamp)
+        {
+            string json = string.Format("{{\n \"x\": {0},\n\"y\": {1},\n \"timeStamp\" : \"{2}\"\n }},\n", xPosition, yPosition, timeStamp);
+            return json;
+        }
+
+
     }
 }

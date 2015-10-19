@@ -5,11 +5,29 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
+
 namespace EyeLog
 {
+
     public partial class EyeLogForm : Form
     {
+        // Error messages
+        private string EXIT_WHILE_REC_ERR = "Can't exit while recording";
+        private string REC_WHILE_REC_ERR = "Can't record while recording";
 
+        /// <summary>
+        /// Check if recording
+        /// </summary>
+        private bool m_IsRecording;
+
+        /// <summary>
+        /// Running time
+        /// </summary>
+        private DateTime m_StartTime;
+
+        /// <summary>
+        /// json file to return
+        /// </summary>
         private List<string> m_Json;
 
         /// <summary>
@@ -44,6 +62,12 @@ namespace EyeLog
             m_Json = new List<string>();
 
             InitializeComponent();
+
+            KeyPreview = true;
+
+            //TODO: Create custom cursor for the EYETRIBE
+            /*this.Cursor = new Cursor(GetType(), "Cursor-icon.cur");*/
+            
         }
 
         /// <summary>
@@ -55,6 +79,7 @@ namespace EyeLog
             m_TrayMenu.MenuItems.Add("Exit", OnExit);
             m_TrayMenu.MenuItems.Add("Start", StartRecordingCoordinates);
             m_TrayMenu.MenuItems.Add("Stop", StopRecordingCoordinates);
+
 
             //TODO: different method?
             // Create a tray icon. In this example we use a
@@ -76,14 +101,21 @@ namespace EyeLog
         /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
+            //TODO: HotKey @ tray application
             Visible = false;
             ShowInTaskbar = false;
+            // Set origin to left top corner
             Location = new Point(-8, -31);
             base.OnLoad(e);
         }
 
         private void OnExit(object sender, EventArgs e)
         {
+            if (m_IsRecording)
+            {
+                MessageBox.Show(EXIT_WHILE_REC_ERR);
+                return;
+            }
             Application.Exit();
         }
 
@@ -136,14 +168,26 @@ namespace EyeLog
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string coords = Utils.Utils.ControllerCoordinates(this, m_StopWatch);
+            string coords = Utils.Utils.SetJsonInformation(this, m_StopWatch, m_StartTime);
             m_MouseCoords.Add(coords);
         }
 
         private void StartRecordingCoordinates(object sender, EventArgs e)
         {
+            if (m_IsRecording)
+            {
+                MessageBox.Show(REC_WHILE_REC_ERR);
+                return;
+            }
+
+            m_IsRecording = true;
+
             timer1.Start();
             m_StopWatch.Start();
+
+            // Get start time
+            m_StartTime = DateTime.Now;
+
         }
 
         /// <summary>
@@ -158,7 +202,14 @@ namespace EyeLog
             ClearLogs();
             m_StopWatch.Reset();
             m_Json.Clear();
+            m_IsRecording = false;
         }
+
+
+ 
+
+
+        
 
 
     }

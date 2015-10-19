@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace EyeLog
 {
@@ -39,12 +40,14 @@ namespace EyeLog
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // EyeLogForm
             // 
-            this.Name = "Form1";
+        //    this.ClientSize = new System.Drawing.Size(100, 100);
+            this.Name = "EyeLogForm";
+
             this.ResumeLayout(false);
 
         }
