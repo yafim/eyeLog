@@ -22,9 +22,9 @@ namespace Utils
             // Current cursor position
             Point relativePoint = form.PointToClient(Cursor.Position);
 
+            // Set time stamp 
+            //TODO: Use GetTimeStamp method.
             string timeStamp = m_TimeElasped.ToString();
-            
-         //   string str = string.Format("{{\n \"x\": {0},\n\"y\": {1},\n \"timeStamp\" : \"{2}\"\n }},\n", relativePoint.X, relativePoint.Y, timeStamp);
 
             string strToReturn = SetJsonFormat(relativePoint.X, relativePoint.Y, timeStamp);
             return strToReturn;
